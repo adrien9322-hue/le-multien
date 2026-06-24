@@ -141,12 +141,16 @@
     var container = document.getElementById('mesReservations');
     var list = getReservations();
 
+    section.style.display = '';
+
     if (!list.length) {
-      section.style.display = 'none';
+      container.innerHTML =
+        '<div class="resa-empty">'
+        + '<p class="intro-text">Tu n\'as pas encore de réservation.</p>'
+        + '<button class="btn btn-noir btn-sm" data-page="agenda">Voir l\'agenda</button>'
+        + '</div>';
       return;
     }
-
-    section.style.display = '';
     container.innerHTML = list.map(function (r, index) {
       var prix = r.prixlabel === 'Gratuit' ? 'Gratuit' : (r.prixlabel === 'Prix libre' ? 'Prix libre' : r.total + ' €');
       return '<div class="resa-item">'

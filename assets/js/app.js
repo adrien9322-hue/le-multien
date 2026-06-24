@@ -170,62 +170,46 @@
           + 'data-prixmax="' + (ev.prixMax != null ? ev.prixMax : 0) + '" '
           + 'data-prixlabel="' + (ev.prixLabel || '') + '">Réserver</button>';
       }
-      return '<div class="event-row">'
+      var media = ev.image
+        ? '<div class="event-card-media">'
+          + '<img src="' + ev.image + '" alt="' + ev.titre + '" class="event-card-img" loading="lazy">'
+          + (ev.tagLabel ? '<span class="event-tag ' + ev.tagClass + '">' + ev.tagLabel + '</span>' : '')
+          + '</div>'
+        : '';
+      return '<div class="event-card">'
+        + media
+        + '<div class="event-row">'
         + '<div class="event-date"><span class="day">' + ev.jour + '</span><span class="month">' + ev.mois + '</span></div>'
         + '<div class="event-body">'
         +   '<div class="event-info"><h3>' + ev.titre + '</h3><p class="event-meta">' + ev.meta + '</p></div>'
         +   '<div class="event-actions"><span class="event-price">' + prix + '</span>' + action + '</div>'
         + '</div>'
+        + '</div>'
         + '</div>';
     }).join('');
 
     recEl.innerHTML = data.recurrents.map(function (r) {
-      return '<div class="card">'
+      var media = r.image
+        ? '<div class="event-card-media">'
+          + '<img src="' + r.image + '" alt="' + r.titre + '" class="event-card-img event-card-img-sm" loading="lazy">'
+          + (r.tagLabel ? '<span class="event-tag ' + r.tagClass + '">' + r.tagLabel + '</span>' : '')
+          + '</div>'
+        : '';
+      return '<div class="event-card">'
+        + media
+        + '<div class="event-card-body">'
         + '<h3>' + r.titre + '</h3>'
         + '<p class="event-meta">' + r.meta + '</p>'
         + '<p>' + r.description + '</p>'
+        + '</div>'
         + '</div>';
     }).join('');
-  }
-
-  function renderHomeWidget(data) {
-    var el = document.getElementById('homeProchain');
-    if (!el) return;
-    var next = null;
-    for (var i = 0; i < data.evenements.length; i++) {
-      if (data.evenements[i].reservable) { next = data.evenements[i]; break; }
-    }
-    if (!next) next = data.evenements[0];
-    if (!next) { el.innerHTML = ''; return; }
-
-    var prix = next.prixLabel ? next.prixLabel : (next.prixMin + ' – ' + next.prixMax + ' €');
-    var action = next.reservable
-      ? '<button class="btn btn-noir btn-reserver btn-sm"'
-          + ' data-id="' + next.id + '"'
-          + ' data-titre="' + next.titre + '"'
-          + ' data-meta="' + next.meta + '"'
-          + ' data-prixmin="' + (next.prixMin != null ? next.prixMin : 0) + '"'
-          + ' data-prixmax="' + (next.prixMax != null ? next.prixMax : 0) + '"'
-          + ' data-prixlabel="' + (next.prixLabel || '') + '">Réserver</button>'
-      : '';
-
-    el.innerHTML =
-      '<div class="event-row">'
-      + '<div class="event-date"><span class="day">' + next.jour + '</span><span class="month">' + next.mois + '</span></div>'
-      + '<div class="event-body">'
-      +   '<div class="event-info"><h3>' + next.titre + '</h3><p class="event-meta">' + next.meta + '</p></div>'
-      +   '<div class="event-actions"><span class="event-price">' + prix + '</span>' + action + '</div>'
-      + '</div>'
-      + '</div>';
   }
 
   function loadAgenda() {
     fetch('data/agenda.json')
       .then(function (r) { return r.json(); })
-      .then(function (data) {
-        renderAgenda(data);
-        renderHomeWidget(data);
-      })
+      .then(renderAgenda)
       .catch(function () {
         document.getElementById('agendaCycle').innerHTML =
           '<p class="intro-text">Impossible de charger l\'agenda pour le moment.</p>';

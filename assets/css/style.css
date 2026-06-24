@@ -330,6 +330,73 @@ section { padding: 32px 0; }
 .intro-text { font-size: 0.98rem; }
 .intro-text.center { text-align: center; margin: 0 auto 1.5rem; }
 
+/* ===== Event card with photo ===== */
+.event-card {
+  background: var(--blanc);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.event-card-media { position: relative; }
+
+.event-card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  border-bottom: var(--border);
+}
+
+.event-card-img-sm { height: 110px; }
+
+.event-card .event-row {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+.event-card-body { padding: 1rem 1.2rem; }
+.event-card-body h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+
+/* ===== Event tags ===== */
+.event-tag {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  font-family: var(--ui);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+.tag-concert   { background: var(--violet);  color: var(--blanc); }
+.tag-spectacle { background: var(--corail);  color: var(--blanc); }
+.tag-marche    { background: var(--sauge);   color: var(--blanc); }
+.tag-bal       { background: var(--jaune);   color: var(--noir);  }
+.tag-scene     { background: var(--petrole); color: var(--blanc); }
+.tag-cine      { background: var(--noir);    color: var(--jaune); }
+.tag-repair    { background: var(--menthe);  color: var(--noir);  }
+.tag-cuisine   { background: var(--rose);    color: var(--noir);  }
+
+/* ===== Réservations vide ===== */
+.resa-empty {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: var(--blanc);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.resa-empty p { margin-bottom: 1rem; }
+
 /* ===== Ticket events ===== */
 .event-row {
   display: flex;

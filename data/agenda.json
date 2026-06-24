@@ -7,6 +7,9 @@
       "mois": "Avril",
       "titre": "Concert d'ouverture",
       "meta": "Vendredi · 20h30 · La Scène",
+      "image": "img/AdobeStock_208487214.jpeg",
+      "tagLabel": "Concert",
+      "tagClass": "tag-concert",
       "prixMin": 5,
       "prixMax": 15,
       "reservable": true
@@ -17,6 +20,9 @@
       "mois": "Avril",
       "titre": "Spectacle",
       "meta": "Samedi · 20h30 · La Scène",
+      "image": "img/AdobeStock_330680609.jpeg",
+      "tagLabel": "Spectacle",
+      "tagClass": "tag-spectacle",
       "prixMin": 5,
       "prixMax": 15,
       "reservable": true
@@ -27,6 +33,9 @@
       "mois": "Avril",
       "titre": "Grand marché régional",
       "meta": "Toute la journée · Hangar & cour",
+      "image": "img/AdobeStock_33869776.jpeg",
+      "tagLabel": "Marché",
+      "tagClass": "tag-marche",
       "prixLabel": "Gratuit",
       "reservable": false
     },
@@ -36,6 +45,9 @@
       "mois": "Avril",
       "titre": "Bal de clôture",
       "meta": "Soirée · La Scène",
+      "image": "https://picsum.photos/id/1060/480/200",
+      "tagLabel": "Bal",
+      "tagClass": "tag-bal",
       "prixLabel": "Prix libre",
       "prixMin": 0,
       "prixMax": 0,
@@ -46,22 +58,34 @@
     {
       "titre": "Scène ouverte",
       "meta": "Tous les jeudis soir",
-      "description": "Musiciens, conteurs et artistes amateurs ou confirmés viennent partager un moment sur la scène du Multien. Entrée libre."
+      "description": "Musiciens, conteurs et artistes amateurs ou confirmés viennent partager un moment sur la scène du Multien. Entrée libre.",
+      "image": "https://picsum.photos/id/164/480/200",
+      "tagLabel": "Scène ouverte",
+      "tagClass": "tag-scene"
     },
     {
       "titre": "Ciné-club",
       "meta": "2 dimanches par mois",
-      "description": "Projections suivies d'échanges, en lien avec la région du mois ou les thématiques du territoire."
+      "description": "Projections suivies d'échanges, en lien avec la région du mois ou les thématiques du territoire.",
+      "image": "https://picsum.photos/id/42/480/200",
+      "tagLabel": "Ciné-club",
+      "tagClass": "tag-cine"
     },
     {
       "titre": "Repair Café",
       "meta": "Un samedi par mois",
-      "description": "Apportez vos objets en panne, repartez avec des objets réparés et de nouveaux savoir-faire."
+      "description": "Apportez vos objets en panne, repartez avec des objets réparés et de nouveaux savoir-faire.",
+      "image": "https://picsum.photos/id/348/480/200",
+      "tagLabel": "Repair Café",
+      "tagClass": "tag-repair"
     },
     {
       "titre": "Cuisine collective",
       "meta": "Tous les mercredis",
-      "description": "On cuisine ensemble des recettes venues d'ici et d'ailleurs, à partager autour de la grande table."
+      "description": "On cuisine ensemble des recettes venues d'ici et d'ailleurs, à partager autour de la grande table.",
+      "image": "https://picsum.photos/id/292/480/200",
+      "tagLabel": "Cuisine",
+      "tagClass": "tag-cuisine"
     }
   ]
 }
