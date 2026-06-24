@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Le Multien</title>
+
+<meta name="theme-color" content="#FCC400">
+<meta name="description" content="L'appli du Multien, tiers-lieu culturel à Meaux : agenda, réservations, carte d'adhérent.">
+
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icons/icon-192.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Le Multien">
+<meta name="mobile-web-app-capable" content="yes">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+<div class="offline-banner" id="offlineBanner">Vous êtes hors ligne — certaines actions nécessitent une connexion.</div>
+
+<main>
+
+<!-- ===================== ACCUEIL ===================== -->
+<section id="accueil" class="page active">
+  <div class="hero">
+    <div class="hero-media">
+      <img src="img/AdobeStock_467047723.jpeg" alt="Paysage de région française" id="heroPoster">
+      <video autoplay muted loop playsinline poster="img/AdobeStock_467047723.jpeg" id="heroVideo">
+        <source src="video/video-site.mov" type="video/quicktime">
+        Votre navigateur ne prend pas en charge la lecture vidéo intégrée.
+      </video>
+    </div>
+    <div class="container hero-content">
+      <span class="pill">Ce mois-ci · Région à l'honneur</span>
+      <h1>Auvergne-Rhône-Alpes</h1>
+      <p class="hero-sub">Un tiers-lieu installé dans un ancien hangar à Meaux, qui fait vivre chaque mois une région française à travers ses musiques, ses plats, ses savoir-faire et ses rencontres.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-noir" data-page="agenda">Réserver un événement</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <section>
+      <div class="section-head">
+        <h2>Prochain événement</h2>
+      </div>
+      <div id="homeProchain"><p class="intro-text">Chargement…</p></div>
+      <div style="text-align:right; margin-top:0.8rem;">
+        <button class="btn btn-ghost btn-sm" data-page="agenda">Tout l'agenda →</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Tout se passe sous le même toit</h2>
+        <p class="intro-text">Trois pôles, un seul hangar. Restauration, scène et ateliers cohabitent pour faire du Multien un lieu qu'on visite pour une raison et où l'on reste pour dix autres.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-stripe stripe-corail"></div>
+          <h3 class="card-title-lg">La Tablée</h3>
+          <p>Café-restaurant associatif 7j/7, coworking et épicerie 77 : le ventre et le quotidien du Multien.</p>
+        </div>
+        <div class="card">
+          <div class="card-stripe stripe-violet"></div>
+          <h3 class="card-title-lg">La Scène</h3>
+          <p>Concerts, scène ouverte, ciné-club, conférences et le grand cycle régional mensuel.</p>
+        </div>
+        <div class="card">
+          <div class="card-stripe stripe-sauge"></div>
+          <h3 class="card-title-lg">L'Atelier</h3>
+          <p>Repair Café, numérique inclusif, cuisine collective, artisanat et mémoire des récits.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="install-box hidden" id="installBox">
+        <h3>Installe l'appli du Multien</h3>
+        <p>Accède à ton agenda, ta carte d'adhérent et tes réservations même hors ligne, directement depuis ton écran d'accueil.</p>
+        <button class="btn btn-jaune" id="installBtn">Installer l'appli</button>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+<!-- ===================== AGENDA & RESERVATIONS ===================== -->
+<section id="agenda" class="page">
+  <div class="container">
+    <section>
+      <div class="section-head">
+        <h1>Agenda &amp; réservations</h1>
+        <p class="intro-text">Réservez vos places pour les temps forts du mois, et retrouvez tous les rendez-vous réguliers du Multien.</p>
+      </div>
+    </section>
+
+    <section id="mesReservationsSection" style="display:none;">
+      <h2 style="margin-bottom:1rem;">Mes réservations</h2>
+      <div id="mesReservations"></div>
+    </section>
+
+    <section>
+      <h2 style="margin-bottom:1rem;" id="cycleTitre">Cycle régional</h2>
+      <div id="agendaCycle">
+        <p class="intro-text">Chargement de l'agenda…</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="margin-bottom:1rem;">Tous les mois, en continu</h2>
+      <div class="grid grid-2" id="agendaRecurrents"></div>
+    </section>
+  </div>
+</section>
+
+<!-- ===================== MEMBRE ===================== -->
+<section id="membre" class="page">
+  <div class="container">
+    <section>
+      <div id="membreContent"></div>
+    </section>
+  </div>
+</section>
+
+<!-- ===================== ACCES ===================== -->
+<section id="acces" class="page">
+  <div class="container">
+    <section>
+      <div class="section-head">
+        <h1>Venir nous voir</h1>
+      </div>
+      <div class="section-bloc-noir" style="text-align:left;">
+        <h2 style="margin-bottom:0.5rem;">Le Multien</h2>
+        <ul class="infos-list">
+          <li>
+            <strong>Adresse</strong>
+            26 rue des Buttes Blanches, 77100 Meaux
+          </li>
+          <li>
+            <strong>Accès</strong>
+            Bus A, arrêt « Georges Claude » — toutes les 10 min
+          </li>
+          <li>
+            <strong>Horaires</strong>
+            Ouvert 7j/7, de 8h à 22h
+          </li>
+          <li>
+            <strong>Contact presse &amp; mécénat</strong>
+            presse@lemultien.fr · 01 64 00 00 00
+          </li>
+        </ul>
+      </div>
+      <div class="map-box">
+        <iframe
+          title="Carte — Le Multien, 26 rue des Buttes Blanches, 77100 Meaux"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=2.860%2C48.951%2C2.896%2C48.971&layer=mapnik&marker=48.961%2C2.878"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <span class="map-pin">📍 Le Multien</span>
+      </div>
+    </section>
+  </div>
+</section>
+
+</main>
+
+</div>
+
+<!-- ===================== TAB BAR ===================== -->
+<nav class="tabbar" aria-label="Navigation principale">
+  <button class="tab-link active" data-page="accueil">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+    Accueil
+  </button>
+  <button class="tab-link" data-page="agenda">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 9h18"/></svg>
+    Agenda
+  </button>
+  <button class="tab-link" data-page="membre">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    Membre
+  </button>
+  <button class="tab-link" data-page="acces">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Accès
+  </button>
+</nav>
+
+<!-- ===================== MODALE RESERVATION ===================== -->
+<div class="modal-overlay" id="modalReservation" role="dialog" aria-modal="true" aria-labelledby="modalResaTitre">
+  <div class="modal-box">
+    <button class="modal-close" id="modalResaClose" aria-label="Fermer">×</button>
+    <h3 id="modalResaTitre">Réserver</h3>
+    <p class="intro-text" id="modalResaMeta"></p>
+
+    <div class="form-group">
+      <label>Nombre de places</label>
+      <div class="qty-control">
+        <button type="button" id="qtyMoins" aria-label="Moins">−</button>
+        <span id="qtyValue">1</span>
+        <button type="button" id="qtyPlus" aria-label="Plus">+</button>
+      </div>
+    </div>
+
+    <div class="recap-box">
+      <p style="margin-bottom:0.3rem;"><strong id="recapTitre"></strong></p>
+      <p class="event-meta" id="recapMeta"></p>
+      <p class="event-meta" id="recapPrixUnit"></p>
+      <div class="total" id="recapTotal"></div>
+    </div>
+
+    <button class="btn btn-noir btn-bloc" id="confirmReservation">Confirmer la réservation</button>
+  </div>
+</div>
+
+<!-- ===================== MODALE INSTALL IOS ===================== -->
+<div class="modal-overlay" id="modalIOS" role="dialog" aria-modal="true" aria-labelledby="modalIOSTitre">
+  <div class="modal-box">
+    <button class="modal-close" id="modalIOSClose" aria-label="Fermer">×</button>
+    <h3 id="modalIOSTitre">Installer sur iPhone / iPad</h3>
+    <p>Safari ne propose pas l'installation automatique. Pour ajouter Le Multien sur ton écran d'accueil :</p>
+    <ol>
+      <li>Touche le bouton <strong>Partager</strong> <span aria-hidden="true">⬆️</span> dans la barre de Safari.</li>
+      <li>Choisis <strong>Sur l'écran d'accueil</strong>.</li>
+      <li>Valide en touchant <strong>Ajouter</strong>.</li>
+    </ol>
+    <button class="btn btn-noir btn-bloc" id="modalIOSOk">Compris</button>
+  </div>
+</div>
+
+<!-- ===================== TOAST ===================== -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/qr-creator.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/reservations.js"></script>
+<script src="assets/js/carte.js"></script>
+
+</body>
+</html>
